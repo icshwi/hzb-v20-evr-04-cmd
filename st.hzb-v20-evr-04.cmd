@@ -5,7 +5,7 @@ epicsEnvSet("EVR", "$(DEVICE)")
 epicsEnvSet("CHIC_SYS", "HZB-V20:")
 epicsEnvSet("CHOP_DRV", "Chop-Drv-04tmp")
 epicsEnvSet("CHIC_DEV", "TS-$(DEVICE)")
-epicsEnvSet("MRF_HW_DB", "evr-cpci-300.db")
+epicsEnvSet("MRF_HW_DB", "evr-cpci-230.db")
 #epicsEnvSet("E3_MODULES", "/epics/iocs/e3")
 epicsEnvSet("EPICS_CMDS", "/epics/iocs/cmds")
 
