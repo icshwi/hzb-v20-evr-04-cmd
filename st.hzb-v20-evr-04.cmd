@@ -1,11 +1,12 @@
 epicsEnvSet("SYS", "HZB-V20:TS")
-epicsEnvSet("PCI_SLOT", "6:0.0")
+epicsEnvSet("PCI_SLOT_0", "05:0b.0")
+epicsEnvSet("PCI_SLOT_1", "06:0b.0")
 epicsEnvSet("DEVICE", "EVR-04")
 epicsEnvSet("EVR", "$(DEVICE)")
 epicsEnvSet("CHIC_SYS", "HZB-V20:")
 epicsEnvSet("CHOP_DRV", "Chop-Drv-04tmp")
 epicsEnvSet("CHIC_DEV", "TS-$(DEVICE)")
-epicsEnvSet("MRF_HW_DB", "evr-cpci-230.db")
+epicsEnvSet("MRF_HW_DB", "evr-cpci-230-ess.db")
 #epicsEnvSet("E3_MODULES", "/epics/iocs/e3")
 epicsEnvSet("EPICS_CMDS", "/epics/iocs/cmds")
 
@@ -16,7 +17,15 @@ epicsEnvSet("NCG_SYS", "HZB-V20:")
 epicsEnvSet("NCG_DRV", "Chop-Drv-04tmp:")
 ##################################################
 
-< "$(EPICS_CMDS)/mrfioc2-common-cmd/st.evr.cmd"
+< "$(EPICS_CMDS)/mrfioc2-common-cmd/7_st.evr.cmd"
+
+iocInit()
+
+# Global default values
+# Set the frequency that the EVR expects from the EVG for the event clock
+dbpf $(SYS)-$(DEVICE):Time-Clock-SP 88.0525
+
+dbpf $(SYS)-$(DEVICE):Ena-Sel 1
 
 # Set delay compensation target. This is required even when delay compensation
 # is disabled to avoid occasionally corrupting timestamps.
