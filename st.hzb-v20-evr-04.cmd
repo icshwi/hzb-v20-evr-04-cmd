@@ -1,8 +1,8 @@
 require evr-timestamp-buffer,2.5.0
 
 epicsEnvSet("SYS", "HZB-V20:TS")
-epicsEnvSet("PCI_SLOT_0", "05:0b.0")
-epicsEnvSet("PCI_SLOT_1", "06:0b.0")
+epicsEnvSet("PCI_SLOT", "05:0b.0")
+#epicsEnvSet("PCI_SLOT", "06:0b.0")
 epicsEnvSet("DEVICE", "EVR-04")
 epicsEnvSet("EVR", "$(DEVICE)")
 epicsEnvSet("CHIC_SYS", "HZB-V20:")
