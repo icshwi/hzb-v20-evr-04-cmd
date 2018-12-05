@@ -1,16 +1,20 @@
 require evr-timestamp-buffer,2.5.0
 
 epicsEnvSet("SYS", "HZB-V20:TS")
-epicsEnvSet("PCI_SLOT", "05:0b.0")
-#epicsEnvSet("PCI_SLOT", "06:0b.0")
 epicsEnvSet("DEVICE", "EVR-04")
+
+epicsEnvSet("EPICS_CMDS", "/epics/iocs/cmds")
+# Find the PCI bus number for the cards in the crate
+system("$(EPICS_CMDS)/mrfioc2-common-cmd/find_pci_bus_id.bash")
+< "$(EPICS_CMDS)/mrfioc2-common-cmd/pci_bus_id"
+
+epicsEnvSet("PCI_SLOT", "$(PCI_BUS_NUM):0b.0")
 epicsEnvSet("EVR", "$(DEVICE)")
 epicsEnvSet("CHIC_SYS", "HZB-V20:")
 epicsEnvSet("CHOP_DRV", "Chop-Drv-04tmp")
 epicsEnvSet("CHIC_DEV", "TS-$(DEVICE)")
 epicsEnvSet("MRF_HW_DB", "evr-cpci-230-ess.db")
 #epicsEnvSet("E3_MODULES", "/epics/iocs/e3")
-epicsEnvSet("EPICS_CMDS", "/epics/iocs/cmds")
 
 ######## Temporary until chopper group ###########
 ######## changes PV names              ###########
