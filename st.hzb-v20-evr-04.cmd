@@ -30,6 +30,8 @@ dbLoadRecords("$(MRF_HW_DB)","EVR=$(EVR),SYS=$(SYS),D=$(DEVICE),FEVT=88.0525,PIN
 # Load timestamp buffer database
 iocshLoad("$(evr-timestamp-buffer_DIR)/evr-timestamp-buffer.iocsh", "CHIC_SYS=$(CHIC_SYS), CHIC_DEV=$(CHIC_DEV), CHOP_DRV=$(CHOP_DRV), SYS=$(SYS)")
 
+dbLoadRecords("/epics/iocs/cmds/hzb-v20-evr-04-cmd/evr4alias.db")
+
 iocInit()
 
 # Global default values
